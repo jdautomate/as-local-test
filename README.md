@@ -7,15 +7,21 @@ This README would normally document whatever steps are necessary to get your app
 * Access Server Test VM - Local using vagrant, ansible and virtualbox
 * AS 2.1.9
 
-### How do I get set up? ###
+### Where to start? ###
 
 * Dependencies are ansible, vagrant and virtualbox on your local machine
 
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Clone the repo with git@bitbucket.org:jdopenvpn/as-local-test.git
+* chmod +x setup.sh
+* run ./setup.sh (script will create and start the VM, replace Vagrantfile, apt-get update and install python - necessary for ansible) 
+* Run vagrant commands
+* vagrant up
+* vagrant provision
+
+The playbook will take a bit to run, it has to download and install AS, after that is done the tests are fast.  Results can be seen in the textfile -
+/tmp/results.txt (on your local machine)
+
+That is it.
 
 ### Contribution guidelines ###
 
