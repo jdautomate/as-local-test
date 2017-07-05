@@ -1,0 +1,33 @@
+---
+- name: test connection to VM
+  ping: 
+
+- name: get AS .deb package - 2.1.9
+  get_url:
+    url: http://swupdate.openvpn.org/as/openvpn-as-2.1.9-Ubuntu16.amd_64.deb
+    dest: /root/
+
+- name: install AS .deb package
+  apt:
+    deb: /root/openvpn-as-2.1.9-Ubuntu16.amd_64.deb
+
+- name: basic tests - is package downloaded?
+  raw: ls /root | grep openvpn-as-* >> results.txt
+
+- name: sha256 checksum results
+  raw: sha256sum /root/openvpn-as-2.1.9-Ubuntu16.amd_64.deb >> results.txt
+
+- name: find openvpn_as directory
+  raw: ls /usr/local | grep openvpn_as >> results.txt
+
+- name: is openvpnas service up and running?
+  raw: service openvpnas status | head | grep openvpnas.service >> results.txt
+
+- name: pid checks
+  raw: ps aux | grep openvpnas >> results.txt
+
+- name: fetch results.txt
+  fetch:
+    src: /home/ubuntu/results.txt
+    dest: /tmp/results.txt
+    flat: yes
