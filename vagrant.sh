@@ -3,3 +3,5 @@
 vagrant up
 
 vagrant provision
+
+vagrant destroy

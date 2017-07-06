@@ -19,7 +19,6 @@ This README would normally document whatever steps are necessary to get your app
 The playbook will take a bit to run, it has to download and install AS, after that is done the tests are fast.  Results can be seen in the textfile -
 /tmp/results.txt (on your local machine)
 
-When finished with the VM, run:
-vagrant destroy (vagrant halt if you just want to stop the machine)
+vagrant destroy runs to wipe out the VM once the test is done.
 
 That is it.
