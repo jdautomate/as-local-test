@@ -32,3 +32,6 @@ config.vm.provision "ansible" do |ansible|
 end
 end
 EOF 
+
+vagrant up
+vagrant provision
