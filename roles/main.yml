@@ -26,6 +26,43 @@
 - name: pid checks
   raw: ps aux | grep openvpnas >> results.txt
 
+- name: choose local authentication
+  command: /usr/local/openvpn_as/scripts/sacli --key auth.module.type --value local ConfigPut
+
+- name: add user named testuser
+  command: /usr/local/openvpn_as/scripts/sacli -u testuser -k type -v user_connect UserPropPut
+
+- name: add admin user named admin
+  command: /usr/local/openvpn_as/scripts/sacli -u admin -k prop_superuser -v true UserPropPut
+
+- name: restart openvpnas service
+  service: 
+    name: openvpnas
+    state: restarted
+
+- name: test authentication for testuser
+  command: /usr/local/openvpn_as/scripts/authcli -u testuser -p password >> results.txt
+
+- name: test authentication for admin
+  command: /usr/local/openvpn_as/scripts/authcli -u testuser -p admin >> results.txt
+
+- name: add user-specific access controls - testuser nat to 10.0.0.0/24
+  command: /usr/local/openvpn_as/scripts/sacli -u testuser -k access_to.0 --value "+NAT:10.0.0.0/24" UserPropPut
+
+- name: add user-specific access controls - admin route to 192.168.33.0/24
+  command: /usr/local/openvpn_as/scripts/sacli -u admin -k access_to.0 --value "+ROUTE:192.168.33.0/24" UserPropPut
+
+- name: view all users in AS local auth
+  command: /usr/local/openvpn_as/scripts/confdba -a >> results.txt
+
+- name: check vpnsummary
+  command: /usr/local/openvpn_as/scripts/sacli vpnsummary
+
+- name: restart openvpnas service
+  service: 
+    name: openvpnas
+    state: restarted
+
 - name: fetch results.txt
   fetch:
     src: /home/ubuntu/results.txt
