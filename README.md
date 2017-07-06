@@ -18,7 +18,6 @@ This README would normally document whatever steps are necessary to get your app
 Execute these commands
 
 * vagrant up
-* vagrant provision
 
 The playbook will take a bit to run, it has to download and install AS, after that is done the tests are fast.  Results can be seen in the textfile -
 /tmp/results.txt (on your local machine)
