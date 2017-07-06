@@ -8,8 +8,7 @@ vagrant init $OS/$RELEASE
 
 # Clear default Vagrantfile
 echo "" > Vagrantfile
-
-cat >> Vagrantfile << 'EOF'
+cat > Vagrantfile << 'EOF'
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -31,7 +30,4 @@ config.vm.provision "ansible" do |ansible|
   ansible.playbook = "site.yml"
 end
 end
-EOF 
-
-vagrant up
-vagrant provision
+EOF
