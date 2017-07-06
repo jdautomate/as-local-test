@@ -12,7 +12,6 @@ This README would normally document whatever steps are necessary to get your app
 * Dependencies are ansible, vagrant and virtualbox on your local machine
 
 * Clone the repo with git@bitbucket.org:jdopenvpn/as-local-test.git
-* chmod +x setup.sh
 * run ./setup.sh (script will create and start the VM, replace Vagrantfile, apt-get update and install python - necessary for ansible) 
 * run ./vagrant.sh
 
