@@ -20,7 +20,7 @@ Execute these commands
 * vagrant up
 
 The playbook will take a bit to run, it has to download and install AS, after that is done the tests are fast.  Results can be seen in the textfile -
-/tmp/results.txt (on your local machine)
+/tmp/test_results.log (on your local machine)
 
 vagrant destroy to wipe the VM
 
