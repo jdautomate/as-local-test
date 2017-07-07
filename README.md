@@ -13,11 +13,11 @@ This README would normally document whatever steps are necessary to get your app
 
 * Clone the repo with git@bitbucket.org:jdopenvpn/as-local-test.git
 * run ./setup.sh (script will create and start the VM, replace Vagrantfile, apt-get update and install python - necessary for ansible) 
-* run ./vagrant.sh
 
 Execute these commands
 
-* vagrant up
+* vagrant up (that should fire the entire playbook, but if it gets stuck)
+* vagrant provision
 
 The playbook will take a bit to run, it has to download and install AS, after that is done the tests are fast.  Results can be seen in the textfile -
 /tmp/test_results.log (on your local machine)
